@@ -1,6 +1,5 @@
 import json, requests
 from builtins import input
-from currency_codes import curr
 import os,sys,time
 
 def remove_last_line():
@@ -12,6 +11,9 @@ bold = '\033[1m'
 e_bold = '\033[0m'
 
 def list_codes():
+    file = open("currency_codes.txt","r",encoding="utf-8")
+    curr = json.load(file)
+    file.close()
     for c in curr:
         print("Currency: {:45} Code: {:}".format(bold+curr[c]["name"]+e_bold,bold+c+e_bold))
 
