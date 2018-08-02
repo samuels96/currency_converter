@@ -164,7 +164,7 @@
     },
 
     "BTC": {
-        "name": "Bitcoin",
+        "name": "Bitcoin"
     },
 
     "BWP": {
