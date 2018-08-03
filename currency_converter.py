@@ -1,6 +1,10 @@
-import json, requests
+import os
+import sys
+import time
+import json
+import requests
 from builtins import input
-import os,sys,time
+
 
 def remove_last_line():
     print('\x1b[1A' +'\x1b[2K' + '\x1b[1A')
