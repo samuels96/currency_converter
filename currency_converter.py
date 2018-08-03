@@ -4,20 +4,14 @@ import os,sys,time
 
 def remove_last_line():
     print('\x1b[1A' +'\x1b[2K' + '\x1b[1A')
+
 def refresh():
     os.system('cls' if os.name in "nt" else "clear")
 
 bold = '\033[1m'
 e_bold = '\033[0m'
 
-def list_codes():
-    file = open("currency_codes.txt","r",encoding="utf-8")
-    curr = json.load(file)
-    file.close()
-    for c in curr:
-        print("Currency: {:45} Code: {:}".format(bold+curr[c]["name"]+e_bold,bold+c+e_bold))
-
-def conversion(key):
+def conversion(key,curr):
         while True:
             currency1 = input("\nEnter the code of the currency you want to convert from > ").upper()
             loop = True
@@ -69,6 +63,9 @@ def main():
             file.close()
             break
 
+    file = open("currency_codes.txt","r",encoding="utf-8")
+    curr = json.load(file)
+    file.close()
 
     def menu():
         choice = input("\nEnter 1 to convert currencies\nEnter 2 to lookup currency codes\n> ")
@@ -76,12 +73,13 @@ def main():
             remove_last_line()
             remove_last_line()
             remove_last_line()
-            conversion(key)
+            conversion(key,curr)
             main()
         if choice == "2":
             remove_last_line()
             refresh()
-            list_codes()
+            for c in curr:
+                print("Currency: {:45} Code: {:}".format(bold+curr[c]["name"]+e_bold,bold+c+e_bold))
             input("\nEnter anything to go back > ")
             refresh()
             main()
